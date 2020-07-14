@@ -2,8 +2,39 @@
   "name": "One Palette",
   "version": "1.0",
   "manifest_version": 2,
-  "browser_action": {
-    "default_popup": "index.html"
+  "background": {
+    "scripts": [
+      "static/js/background.js"
+    ]
   },
+  "commands": {
+    "open-command-palette": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+1",
+        "mac": "Command+Shift+1"
+      },
+      "description": "Open command palette",
+      "global": true
+    }
+  },
+  "permissions": [
+    "<all_urls>"
+  ],
+  "browser_action": {},
+  "content_scripts": [
+    {
+      "all_frames": false,
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [],
+      "js": [
+        "/static/js/content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "/index.html"
+  ],
   "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }
